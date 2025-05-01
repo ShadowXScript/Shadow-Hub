@@ -40,7 +40,7 @@ end
 local MainTab = Window:CreateTab("Main Features", 7733960981)
 MainTab:CreateSection("Main Features")
 
-local Toggle = Tab:CreateToggle({
+MainTab:CreateToggle({
    Name = "Always In",
    CurrentValue = false,
    Callback = function(Value)
@@ -61,7 +61,7 @@ local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or 
    end,
 })
 
-local Toggle = Tab:CreateToggle({
+MainTab:CreateToggle({
    Name = "Aim Assist",
    CurrentValue = false,
    Callback = function(Value)
