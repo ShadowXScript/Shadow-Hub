@@ -1,21 +1,4 @@
--- Safe Initialization with Debug Logging
-print("Script Started", game)
-
-if game and typeof(game) == "Instance" and game:IsA("DataModel") then
-    if not game:IsLoaded() then
-        print("Game not loaded, waiting...")
-        game.Loaded:Wait()
-    else
-        print("Game already loaded.")
-    end
-else
-    warn("Game object is nil or invalid!")
-end
-
 -- Shadow Hub | Basketball Zero
-
-
-
 local suc, rf = pcall(function() return loadstring(game:HttpGet("https://sirius.menu/rayfield"))() end)
 if not suc or not rf then return warn("Rayfield UI not loaded.") end
 local r = rf
