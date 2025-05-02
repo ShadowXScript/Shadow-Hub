@@ -2,7 +2,7 @@
 
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-local Window = RayfieldLib:CreateWindow({
+local Window = Rayfield:CreateWindow({
     Name = "Shadow Hub | Basketball Zero",
     LoadingTitle = "Shadow Hub Loading...",
     LoadingSubtitle = "by Shadow",
@@ -34,7 +34,7 @@ local KeySystem = false
 local dS = { Steal = 0.5, Dribble = 0.5, Block = 0.5 }
 
 local function notify(name, state)
-    RayfieldLib:Notify({
+    Rayfield:Notify({
         Title = name,
         Content = name .. " is now " .. (state and "Enabled" or "Disabled"),
         Duration = 3
