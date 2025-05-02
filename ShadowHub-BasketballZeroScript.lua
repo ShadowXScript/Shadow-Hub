@@ -1,15 +1,13 @@
 -- Shadow Hub | Basketball Zero
 
--- Key Check
-local requiredKey = "I AM ATOMIC"
-if getgenv().key ~= requiredKey then
-    return warn("Invalid key. Access denied.")
-end
-
 -- Load Rayfield
 local success, RayfieldLib = pcall(function()
     return loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 end)
+
+if not success or not RayfieldLib then
+    return warn("Failed to load Rayfield UI.")
+end
 
 local Window = RayfieldLib:CreateWindow({
     Name = "Shadow Hub | Basketball Zero",
