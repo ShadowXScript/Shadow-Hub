@@ -32,7 +32,7 @@ getgenv().logo = [[
     ║   ╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝╚═╝░░░░░░░░╚═╝░░░                          ║
     ║                                                                           ║
     ╚═══════════════════════════════════════════════════════════════════════════╝
-                            🌑 Created By Shadow | Shadow Hub 🌑
+                             Created By Shadow | Shadow Hub 
                          Discord: https://discord.gg/KV8pkjbqPA
     ═══════════════════════════════════════════════════════════════════════════════════
     
@@ -42,5 +42,3 @@ getgenv().logo = [[
 getgenv().gamechecker = true
 getgenv().ScriptName = "Shadow Hub"
 getgenv().UniversalScript = [[ loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowXScript/Shadow-Hub/refs/heads/main/AFSE/admincmds.txt"))() ]]
-
--- Loader
