@@ -44,4 +44,3 @@ getgenv().ScriptName = "Shadow Hub"
 getgenv().UniversalScript = [[ loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowXScript/Shadow-Hub/refs/heads/main/AFSE/admincmds.txt"))() ]]
 
 -- Loader
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowXScript/Shadow-Hub/refs/heads/main/Loader.lua"))()
