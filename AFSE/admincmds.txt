@@ -1,0 +1,107 @@
+local _CollectionService = game:GetService('CollectionService')
+local _Players = game:GetService('Players')
+local _TweenService = game:GetService('TweenService')
+
+game:GetService('SoundService')
+
+local u4 = {
+    ScreenGui_1 = Instance.new('ScreenGui', _Players.LocalPlayer:WaitForChild('PlayerGui')),
+}
+
+u4.ScreenGui_1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+_CollectionService:AddTag(u4.ScreenGui_1, 'main')
+
+u4.Loader_2 = Instance.new('Frame', u4.ScreenGui_1)
+u4.Loader_2.BorderSizePixel = 0
+u4.Loader_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+u4.Loader_2.ClipsDescendants = true
+u4.Loader_2.Archivable = false
+u4.Loader_2.Size = UDim2.new(0, 148, 0, 44)
+u4.Loader_2.Position = UDim2.new(0, 14, 0, 2)
+u4.Loader_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+u4.Loader_2.Name = 'Loader'
+u4.Loader_2.BackgroundTransparency = 0.2
+u4.UICorner_3 = Instance.new('UICorner', u4.Loader_2)
+u4.UICorner_3.CornerRadius = UDim.new(1, 0)
+u4.Progress_4 = Instance.new('TextLabel', u4.Loader_2)
+u4.Progress_4.BorderSizePixel = 0
+u4.Progress_4.TextSize = 19
+u4.Progress_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+u4.Progress_4.FontFace = Font.new('rbxasset://fonts/families/PressStart2P.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+u4.Progress_4.TextColor3 = Color3.fromRGB(0, 255, 0)
+u4.Progress_4.BackgroundTransparency = 1
+u4.Progress_4.Size = UDim2.new(0, 50, 0, 44)
+u4.Progress_4.Text = '0%'
+u4.Progress_4.Name = 'Progress'
+u4.Progress_4.Position = UDim2.new(0, -2, 0, -2)
+u4.binarybg_5 = Instance.new('TextLabel', u4.Loader_2)
+u4.binarybg_5.BorderSizePixel = 0
+u4.binarybg_5.TextSize = 39
+u4.binarybg_5.TextTransparency = 0.9
+u4.binarybg_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+u4.binarybg_5.FontFace = Font.new('rbxasset://fonts/families/PressStart2P.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+u4.binarybg_5.TextColor3 = Color3.fromRGB(0, 255, 0)
+u4.binarybg_5.BackgroundTransparency = 1
+u4.binarybg_5.Size = UDim2.new(0, 90, 0, 44)
+u4.binarybg_5.Text = '110001010101011010101010'
+u4.binarybg_5.Name = 'binarybg'
+u4.binarybg_5.Position = UDim2.new(0, 42, 0, -2)
+
+local u5 = {
+    '110001010101011010101010',
+    '101010101010101010101010',
+    '010101010101010101010101',
+    '001100110011001100110011',
+}
+local u6 = 1
+local v7 = coroutine.create(function()
+    while true do
+        u4.binarybg_5.Text = u5[u6]
+        u6 = u6 % #u5 + 1
+
+        wait(0.2)
+    end
+end)
+
+coroutine.resume(v7)
+
+local _Sound = Instance.new('Sound')
+
+_Sound.SoundId = 'rbxassetid://9120299810'
+_Sound.Volume = 0.5
+_Sound.Parent = u4.ScreenGui_1
+
+local function u11(p9)
+    u4.Progress_4.Text = math.floor(p9) .. '%'
+
+    _Sound:Play()
+
+    if p9 >= 100 then
+        _TweenService:Create(u4.Loader_2, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+        _TweenService:Create(u4.Progress_4, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
+
+        local v10 = _TweenService:Create(u4.binarybg_5, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1})
+
+        v10:Play()
+        v10.Completed:Connect(function()
+            u4.ScreenGui_1:Destroy()
+        end)
+    end
+end
+
+local function u13()
+    for v12 = 1, 100 do
+        u11(v12)
+        wait(0.03)
+    end
+end
+
+coroutine.wrap(function()
+    u13()
+    pcall(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowXScript/Shadow-Hub/refs/heads/main/AFSE/admincmds.lua", true))()
+    end)
+end)()
+
+return u4.ScreenGui_1, require
